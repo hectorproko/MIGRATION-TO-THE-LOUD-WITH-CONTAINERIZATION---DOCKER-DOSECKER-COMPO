@@ -14,7 +14,7 @@ hector@hector-Laptop:~$
 I will use a pre-built **MySQL** database container, configure it, and make sure it is ready to receive requests from our PHP application.  
 
 
-Currently there I have no images
+Currently I have no images
 ``` bash
 hector@hector-Laptop:~$ sudo docker images ls
 REPOSITORY   TAG       IMAGE ID   CREATED   SIZE
@@ -35,6 +35,7 @@ Status: Downloaded newer image for mysql/mysql-server:latest
 docker.io/mysql/mysql-server:latest
 ```
 
+Now I see the image I just downloaded  
 ``` bash
 hector@hector-Laptop:~$ sudo docker images
 REPOSITORY           TAG       IMAGE ID       CREATED        SIZE
@@ -42,9 +43,10 @@ mysql/mysql-server   latest    5a9594052aec   3 weeks ago    438MB
 ```
 
 
-deploying a new MySQL container
-docker run --name <container_name> -e MYSQL_ROOT_PASSWORD=<my-secret-pw> -d <docker-image>
-docker run --name MySQL -e MYSQL_ROOT_PASSWORD=Passw0rd! -d mysql/mysql-server:latest
+deploying a new MySQL container  
+`docker run --name <container_name> -e MYSQL_ROOT_PASSWORD=<my-secret-pw> -d <docker-image>`  
+
+`docker run --name MySQL -e MYSQL_ROOT_PASSWORD=Passw0rd! -d mysql/mysql-server:latest`  
 
 
  MySQL container is running:
