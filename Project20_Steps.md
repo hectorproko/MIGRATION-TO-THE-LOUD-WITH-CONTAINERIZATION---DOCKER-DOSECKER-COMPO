@@ -51,25 +51,29 @@ deploying a new MySQL container
 
  MySQL container is running:
 
+``` bash
 hector@hector-Laptop:~$ sudo docker run --name MySQL -e MYSQL_ROOT_PASSWORD=Passw0rd! -d mysql/mysql-server:latest
 ce2dcf1ec7aab8d2dd5c70919ead800fcdcbdc623a64b292a8876f26fcc0f746
 hector@hector-Laptop:~$ sudo docker ps -a
 CONTAINER ID   IMAGE                       COMMAND                  CREATED          STATUS                             PORTS                       NAMES
 ce2dcf1ec7aa   mysql/mysql-server:latest   "/entrypoint.sh mysq…"   31 seconds ago   Up 30 seconds (health: starting)   3306/tcp, 33060-33061/tcp   MySQL
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
 
 # CONNECTING TO THE MYSQL DOCKER CONTAINER
+To avoid having to run docker with `sudo`  
+``` bash
+sudo chmod 666 /var/run/docker.sock #changing permissions
+sudo useradd -G docker $USER #add current user to group docker
+```
+
+
+
+
+First, create a network:  
+`docker network create --subnet=172.18.0.0/24 tooling_app_network`  
+
+
+
+
 
 # PRACTICE TASK
