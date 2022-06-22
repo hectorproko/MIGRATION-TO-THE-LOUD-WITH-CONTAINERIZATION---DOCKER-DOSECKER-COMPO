@@ -72,6 +72,24 @@ sudo useradd -G docker $USER #add current user to group docker
 First, create a network:  
 `docker network create --subnet=172.18.0.0/24 tooling_app_network`  
 
+Creating script `create_user.sql` that generates a user `hector`  
+``` bash
+hector@hector-Laptop:~$ bat create_user.sql
+───────┬─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+       │ File: create_user.sql
+───────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+   1   │ CREATE DATABASE hector;
+   2   │ CREATE USER 'hector'@'%' IDENTIFIED BY 'password';
+   3   │ GRANT ALL PRIVILEGES ON * . * TO 'hector'@'%';
+   4   │
+───────┴─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+hector@hector-Laptop:~$
+
+```
+
+
+
+
 
 
 
