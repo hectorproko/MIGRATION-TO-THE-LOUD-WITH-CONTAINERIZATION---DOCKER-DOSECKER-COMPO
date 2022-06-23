@@ -90,7 +90,7 @@ Creating a new container **mysql-server**
 ``` bash
 docker run --network tooling_app_network -h mysqlserverhost --name=mysql-server -e MYSQL_ROOT_PASSWORD=$MYSQL_PW -d mysql/mysql-server:latest
 ```
-Flags used  
+Flags used:  
 * **-d** runs the container in detached mode  
 * **--network** connects a container to a network  
 * **-h** specifies a hostname  
@@ -129,5 +129,55 @@ Connecting to **mysql-server** using another container in interactive mode
 ``` bash
 docker run --network tooling_app_network --name mysql-client -it --rm mysql mysql -h mysqlserverhost -u hector -p
 ```
+Flags used:  
+* **--name** gives the container a name  
+* **-it** runs in interactive mode and Allocate a pseudo-TTY  
+* **--rm** automatically removes the container when it exits  
+* **--network** connects a container to a network  
+* **-h** a MySQL flag specifying the MySQL server Container hostname  
+* **-u** user created from the SQL script  	
+* **-p**  password specified for the user created from the SQL script  
+
+Connecting to `mysql-server` and displaying database `hector` I created there  
+``` bash
+hector@hector-Laptop:~$ docker run --network tooling_app_network --name mysql-client -it --rm mysql mysql -h mysqlserverhost -u hector -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 236
+Server version: 8.0.29 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| hector             |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql>
+```
+
+As long as we don't exit the container will run  
+``` bash
+
+hector@hector-Laptop:~$ docker ps -a
+CONTAINER ID   IMAGE                       COMMAND                  CREATED          STATUS                 PORTS                       NAMES
+9135fae03302   mysql                       "docker-entrypoint.s…"   19 seconds ago   Up 18 seconds          3306/tcp, 33060/tcp         mysql-client
+acbcd4888fe6   mysql/mysql-server:latest   "/entrypoint.sh mysq…"   3 hours ago      Up 3 hours (healthy)   3306/tcp, 33060-33061/tcp   mysql-server
+
+```
+
 
 # PRACTICE TASK
