@@ -231,3 +231,8 @@ hector@hector-Laptop:~$
 
 
 # PRACTICE TASK
+
+### Practice Task №1 – Implement a POC to migrate the PHP-Todo app into a containerized application.
+
+
+### Practice Task №2 – Complete Continuous Integration With A Test Stage
