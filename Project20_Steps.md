@@ -169,13 +169,63 @@ mysql> show databases;
 mysql>
 ```
 
-As long as we don't exit the container will run  
+As long as we don't exit, the container will run  
 ``` bash
 
 hector@hector-Laptop:~$ docker ps -a
 CONTAINER ID   IMAGE                       COMMAND                  CREATED          STATUS                 PORTS                       NAMES
 9135fae03302   mysql                       "docker-entrypoint.s…"   19 seconds ago   Up 18 seconds          3306/tcp, 33060/tcp         mysql-client
 acbcd4888fe6   mysql/mysql-server:latest   "/entrypoint.sh mysq…"   3 hours ago      Up 3 hours (healthy)   3306/tcp, 33060-33061/tcp   mysql-server
+
+```
+### Prepare database schema
+Cloned repo `git clone https://github.com/hectorproko/tooling` to path `/home/hector`  
+
+Creating an environmental variable for `tooling_db_schema.sql`'s path  
+``` bash
+hector@hector-Laptop:~/tooling/html$ export tooling_db_schema=/home/hector/tooling/html/tooling_db_schema.sql
+hector@hector-Laptop:~/tooling/html$ echo $tooling_db_schema
+/home/hector/tooling/html/tooling_db_schema.sql
+```
+
+Using the variable to execute script on **mysql-server**  
+``` bash
+docker exec -i mysql-server mysql -uroot -p $MYSQL_PW < $tooling_db_schema 
+```
+
+Checking the new database created
+``` bash  
+docker exec -it mysql-server mysql -uroot -p $MYSQL_PW
+```
+``` bash
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| hector             |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| toolingdb          |
++--------------------+
+6 rows in set (0.01 sec)
+
+mysql>
+```
+Updating file `tooling/html/.env`   
+``` bash
+hector@hector-Laptop:~$ bat tooling/html/.env
+───────┬────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+       │ File: tooling/html/.env
+───────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   1   │ # input your environment variables
+   2   │
+   3 ~ │ MYSQL_IP=MySQL #THIS IS WRONG mysqlserverhost
+   5 ~ │ MYSQL_PASS=password
+   6 ~ │ MYSQL_DBNAME=toolingdb
+───────┴────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+hector@hector-Laptop:~$
 
 ```
 
