@@ -120,7 +120,7 @@ hector@hector-Laptop:~$ bat create_user.sql
 Now I execute this script inside of the **mysql-server** container
 
 ``` bash
-hector@hector-Laptop:~$ docker exec -i mysql-server mysql -uroot -p $MYSQL_PW < ./create_user.sql
+hector@hector-Laptop:~$ docker exec -i mysql-server mysql -uroot -p$MYSQL_PW < ./create_user.sql #make sure no space after -p
 mysql: [Warning] Using a password on the command line interface can be insecure.
 hector@hector-Laptop:~$
 ```
