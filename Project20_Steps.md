@@ -221,14 +221,47 @@ hector@hector-Laptop:~$ bat tooling/html/.env
 ───────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
    1   │ # input your environment variables
    2   │
-   3 ~ │ MYSQL_IP=MySQL #THIS IS WRONG mysqlserverhost
+   3 ~ │ MYSQL_IP=mysqlserverhost
    5 ~ │ MYSQL_PASS=password
    6 ~ │ MYSQL_DBNAME=toolingdb
 ───────┴────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 hector@hector-Laptop:~$
 
 ```
+### Run the Tooling App  
+I will now containerize the application `tooling` by telling Docker how to pack the app into a container using a `Dockerfile`
+``` bash
+hector@hector-Laptop:~/tooling$ bat Dockerfile
+───────┬────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+       │ File: Dockerfile
+───────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   1   │ FROM php:7-apache
+   2   │ MAINTAINER Dare dare@zooto.io
+   3   │
+   4   │ RUN docker-php-ext-install mysqli
+   5   │ RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+   6   │ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+   7   │ COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
+   8   │ COPY start-apache /usr/local/bin
+   9   │ RUN a2enmod rewrite
+  10   │
+  11   │ # Copy application source
+  12   │ COPY html /var/www
+  13   │ RUN chown -R www-data:www-data /var/www
+  14   │
+  15   │ CMD ["start-apache"]
+───────┴────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+hector@hector-Laptop:~/tooling$
+```
 
+I being by ensuring my current working directory is `tooling` which contains the `Dockerfile`  
+
+I'll run the following command to `build` 
+``` bash
+docker build -t tooling:0.0.1 .
+```
+`-t` parameter is to `tag` the image as `tooling:0.0.1`  
+The `.` at the end, says to look for Dockerfile in the current working directory
 
 # PRACTICE TASK
 
