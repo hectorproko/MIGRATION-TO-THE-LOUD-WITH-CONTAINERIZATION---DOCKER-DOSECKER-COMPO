@@ -229,7 +229,7 @@ hector@hector-Laptop:~$
 
 ```
 ### Run the Tooling App  
-I will now containerize the application `tooling` by telling Docker how to pack the app into a container using a `Dockerfile`
+I will now containerize the application **tooling** by telling Docker how to pack the app into a container using a **Dockerfile**
 ``` bash
 hector@hector-Laptop:~/tooling$ bat Dockerfile
 ───────┬────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -254,14 +254,17 @@ hector@hector-Laptop:~/tooling$ bat Dockerfile
 hector@hector-Laptop:~/tooling$
 ```
 
-I being by ensuring my current working directory is `tooling` which contains the `Dockerfile`  
+I begin by ensuring my current working directory is **tooling** which contains the **Dockerfile** 
 
 I'll run the following command to `build` 
 ``` bash
 docker build -t tooling:0.0.1 .
 ```
-`-t` parameter is to `tag` the image as `tooling:0.0.1`  
+`-t` parameter is to **tag** the image as **tooling:0.0.1** 
 The `.` at the end, says to look for Dockerfile in the current working directory
+
+
+Now using the this **build** I'll run a container
 
 # PRACTICE TASK
 
