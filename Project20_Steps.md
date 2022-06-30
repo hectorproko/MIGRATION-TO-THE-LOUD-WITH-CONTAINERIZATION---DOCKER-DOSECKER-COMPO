@@ -88,6 +88,7 @@ hector@hector-Laptop:~$
 
 Creating a new container **mysql-server**  
 ``` bash
+export MYSQL_PW="Passw0rd!" #env variable to store root password
 docker run --network tooling_app_network -h mysqlserverhost --name=mysql-server -e MYSQL_ROOT_PASSWORD=$MYSQL_PW -d mysql/mysql-server:latest
 ```
 Flags used:  
@@ -119,7 +120,6 @@ hector@hector-Laptop:~$ bat create_user.sql
 Now I execute this script inside of the **mysql-server** container
 
 ``` bash
-hector@hector-Laptop:~$ export MYSQL_PW="Passw0rd!" #environment variable to store the root password
 hector@hector-Laptop:~$ docker exec -i mysql-server mysql -uroot -p $MYSQL_PW < ./create_user.sql
 mysql: [Warning] Using a password on the command line interface can be insecure.
 hector@hector-Laptop:~$
