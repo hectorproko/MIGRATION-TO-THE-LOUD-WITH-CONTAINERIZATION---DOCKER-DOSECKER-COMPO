@@ -272,7 +272,7 @@ hector@hector-Laptop:~/tooling$ docker run --network tooling_app_network -p 8085
 [Thu Jun 30 19:39:01.289793 2022] [mpm_prefork:notice] [pid 9] AH00163: Apache/2.4.53 (Debian) PHP/7.4.29 configured -- resuming normal operations
 [Thu Jun 30 19:39:01.289822 2022] [core:notice] [pid 9] AH00094: Command line: 'apache2 -D FOREGROUND'
 ```
-`--network` flag to make sure both **Tooling app** and **database** containers are in the same virtual network
+`--network` flag to make sure both **Tooling app** and **database** containers are in the same virtual network  
 `-p` flag to map the container port **80** to host port **8085**
 
 
