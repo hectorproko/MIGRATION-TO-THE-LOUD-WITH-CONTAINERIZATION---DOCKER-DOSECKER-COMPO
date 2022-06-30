@@ -264,7 +264,7 @@ docker build -t tooling:0.0.1 .
 The `.` at the end, says to look for Dockerfile in the current working directory
 
 
-Now using this new **build** I'll run a container in interactive mode just to look inside `it` 
+Now using this new **build** I'll run a container in interactive mode just to look inside `-it` 
 ``` bash
 hector@hector-Laptop:~/tooling$ docker run --network tooling_app_network -p 8085:80 -it tooling:0.0.1
 ```
@@ -274,6 +274,8 @@ hector@hector-Laptop:~/tooling$ docker run --network tooling_app_network -p 8085
 ```
 `--network` flag to make sure both **Tooling app** and **database** containers are in the same virtual network  
 `-p` flag to map the container port **80** to host port **8085**
+
+If everything works, I can open the browser and type `http://localhost:8085`  
 
 
 # PRACTICE TASK
