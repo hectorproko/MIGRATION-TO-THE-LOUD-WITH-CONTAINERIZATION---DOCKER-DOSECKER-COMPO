@@ -190,12 +190,12 @@ hector@hector-Laptop:~/tooling/html$ echo $tooling_db_schema
 
 Using the variable to execute script on **mysql-server**  
 ``` bash
-docker exec -i mysql-server mysql -uroot -p $MYSQL_PW < $tooling_db_schema 
+docker exec -i mysql-server mysql -uroot -p$MYSQL_PW < $tooling_db_schema 
 ```
 
 Checking the new database created
 ``` bash  
-docker exec -it mysql-server mysql -uroot -p $MYSQL_PW
+docker exec -it mysql-server mysql -uroot -p$MYSQL_PW
 ```
 ``` bash
 mysql> SHOW DATABASES;
