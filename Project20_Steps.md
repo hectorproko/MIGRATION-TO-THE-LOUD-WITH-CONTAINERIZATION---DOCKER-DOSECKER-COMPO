@@ -277,6 +277,7 @@ hector@hector-Laptop:~/tooling$ docker run --network tooling_app_network -p 8085
 
 If everything works, I can open the browser and type `http://localhost:8085`  
 
+![logo](https://raw.githubusercontent.com/hectorproko/MIGRATION-TO-THE-LOUD-WITH-CONTAINERIZATION---DOCKER-DOSECKER-COMPO/main/page.png)  
 
 # PRACTICE TASK
 
