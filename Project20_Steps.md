@@ -264,7 +264,13 @@ docker build -t tooling:0.0.1 .
 The `.` at the end, says to look for Dockerfile in the current working directory
 
 
-Now using the this **build** I'll run a container
+Now using this new **build** I'll run a container in interactive mode just to look inside `it` 
+``` bash
+hector@hector-Laptop:~/tooling$ docker run --network tooling_app_network -p 8085:80 -it tooling:0.0.1
+```
+`[Thu Jun 30 19:39:01.289793 2022] [mpm_prefork:notice] [pid 9] AH00163: Apache/2.4.53 (Debian) PHP/7.4.29 configured -- resuming normal operations
+[Thu Jun 30 19:39:01.289822 2022] [core:notice] [pid 9] AH00094: Command line: 'apache2 -D FOREGROUND' ` 
+
 
 # PRACTICE TASK
 
