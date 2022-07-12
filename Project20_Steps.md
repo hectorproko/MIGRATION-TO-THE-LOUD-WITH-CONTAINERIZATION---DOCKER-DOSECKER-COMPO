@@ -287,7 +287,7 @@ Test diagram
   graph TD;
       Something-->Words;
       Something-->Hello;
-      B-->D;
-      C-->D;
+      B<-->D;
+      C--Yes-->D;
 ```
 ### Practice Task №2 – Complete Continuous Integration With A Test Stage
