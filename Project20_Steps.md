@@ -285,8 +285,8 @@ If everything works, I can open the browser and type `http://localhost:8085`
 Test diagram
 ```mermaid
   graph TD;
-      A-->B;
-      A-->C;
+      Something-->Words;
+      Something-->Hello;
       B-->D;
       C-->D;
 ```
