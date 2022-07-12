@@ -282,7 +282,7 @@ If everything works, I can open the browser and type `http://localhost:8085`
 # PRACTICE TASK
 
 ### Practice Task №1 – Implement a POC to migrate the PHP-Todo app into a containerized application.
-
+Test diagram
 ```mermaid
   graph TD;
       A-->B;
