@@ -221,7 +221,7 @@ hector@hector-Laptop:~$ bat tooling/html/.env
 ───────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
    1   │ # input your environment variables
    2   │
-   3 ~ │ MYSQL_IP=mysqlserverhost
+   3 ~ │ MYSQL_IP=mysqlserverhost #might actually be mysql-server name of contianer afterall
    5 ~ │ MYSQL_PASS=password
    6 ~ │ MYSQL_DBNAME=toolingdb
 ───────┴────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -283,5 +283,11 @@ If everything works, I can open the browser and type `http://localhost:8085`
 
 ### Practice Task №1 – Implement a POC to migrate the PHP-Todo app into a containerized application.
 
-
+```mermaid
+  graph TD;
+      A-->B;
+      A-->C;
+      B-->D;
+      C-->D;
+```
 ### Practice Task №2 – Complete Continuous Integration With A Test Stage
