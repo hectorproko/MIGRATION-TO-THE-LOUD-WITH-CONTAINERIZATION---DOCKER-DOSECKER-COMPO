@@ -221,9 +221,10 @@ hector@hector-Laptop:~$ bat tooling/html/.env
 ───────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
    1   │ # input your environment variables
    2   │
-   3 ~ │ MYSQL_IP=mysqlserverhost #might actually be mysql-server name of contianer afterall
-   5 ~ │ MYSQL_PASS=password
-   6 ~ │ MYSQL_DBNAME=toolingdb
+   3   │ MYSQL_IP=mysql-server
+   4   │ MYSQL_USER=hector
+   5   │ MYSQL_PASS=password
+   6   │ MYSQL_DBNAME=toolingdb
 ───────┴────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 hector@hector-Laptop:~$
 
