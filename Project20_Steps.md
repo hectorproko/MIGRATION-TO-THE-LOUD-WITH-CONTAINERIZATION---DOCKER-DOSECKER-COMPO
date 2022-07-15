@@ -308,8 +308,15 @@ DB_DATABASE=hector
 DB_USERNAME=hector
 DB_PASSWORD=password
 ```
+[random value]: variable value
 
-
+```mermaid
+  graph TD;
+      [random value]-->B;
+      A-->C;
+      B-->D;
+      C-->D;
+```
 ### Part 2
 ### Part 3
 
