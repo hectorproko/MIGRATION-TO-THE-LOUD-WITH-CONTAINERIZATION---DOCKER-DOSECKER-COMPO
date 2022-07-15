@@ -309,8 +309,9 @@ DB_USERNAME=hector
 DB_PASSWORD=password
 ```
 Now I will build my `php-todo` app image using `docker build` in the root directory of [TODO app Repo](https://github.com/hectorproko/php-todo) where the desire [Dockerfile](https://github.com/hectorproko/php-todo/blob/main/Dockerfile) file is located  
-
-`docker build -t phptodo . `
+``` bash
+docker build -t phptodo . 
+```
 
 Double checking image was created  
 ``` bash
