@@ -278,13 +278,37 @@ hector@hector-Laptop:~/tooling$ docker run --network tooling_app_network -p 8085
 
 If everything works, I can open the browser and type `http://localhost:8085`  
 
-![logo](https://raw.githubusercontent.com/hectorproko/MIGRATION-TO-THE-LOUD-WITH-CONTAINERIZATION---DOCKER-DOSECKER-COMPO/main/page.png)  
+![logo](https://raw.githubusercontent.com/hectorproko/MIGRATION-TO-THE-LOUD-WITH-CONTAINERIZATION---DOCKER-DOSECKER-COMPO/main/images/page.png)  
 
 # PRACTICE TASK
 
 ## Practice Task №1 – Implement a POC to migrate the PHP-Todo app into a containerized application.
 
 ### Part 1
+1. Write a Dockerfile for the TODO app [Repo Here](https://github.com/hectorproko/php-todo)
+2. Run both database and app on your laptop Docker Engine  
+3. Access the application from the browser  
+
+First I make sure I have my `mysql-server` container created/running with the `.sql` script executed
+``` bash
+docker run --network tooling_app_network -h mysqlserverhost --name=mysql-server -e MYSQL_ROOT_PASSWORD=$MYSQL_PW-d mysql/mysql-server:latest
+
+docker exec -i mysql-server mysql -uroot -p$MYSQL_PW < ./create_user.sql
+```
+
+The 3 files we need to focus on are:  
+[Dockerfile](https://github.com/hectorproko/php-todo/blob/main/Dockerfile)  
+[start-apache.sh](https://github.com/hectorproko/php-todo/blob/main/start-apache.sh)  
+[.env](https://github.com/hectorproko/php-todo/blob/main/.env)  
+
+       This portion:  
+       ``` bash
+       DB_HOST=mysql-server
+       DB_DATABASE=hector
+       DB_USERNAME=hector
+       DB_PASSWORD=password
+       ```
+
 
 ### Part 2
 ### Part 3
