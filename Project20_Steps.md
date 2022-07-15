@@ -285,11 +285,12 @@ If everything works, I can open the browser and type `http://localhost:8085`
 ## Practice Task №1 – Implement a POC to migrate the PHP-Todo app into a containerized application.
 
 ### Part 1
+**Tasks**:  
 1. Write a Dockerfile for the TODO app [Repo Here](https://github.com/hectorproko/php-todo)
 2. Run both database and app on your laptop Docker Engine  
 3. Access the application from the browser  
 
-First I make sure I have my `mysql-server` container created/running with the `.sql` script executed
+First I make sure I have my `mysql-server` **container** created/running with the `.sql` script executed
 ``` bash
 docker run --network tooling_app_network -h mysqlserverhost --name=mysql-server -e MYSQL_ROOT_PASSWORD=$MYSQL_PW-d mysql/mysql-server:latest
 
@@ -308,7 +309,7 @@ DB_DATABASE=hector
 DB_USERNAME=hector
 DB_PASSWORD=password
 ```
-Now I will build my `php-todo` app image using `docker build` in the root directory of [TODO app Repo](https://github.com/hectorproko/php-todo) where the desire [Dockerfile](https://github.com/hectorproko/php-todo/blob/main/Dockerfile) file is located  
+Now I will build my `php-todo` app **image** using `docker build` in the root directory of [TODO app Repo](https://github.com/hectorproko/php-todo) where the desire [Dockerfile](https://github.com/hectorproko/php-todo/blob/main/Dockerfile) file is located  
 ``` bash
 docker build -t phptodo . 
 ```
@@ -326,7 +327,7 @@ docker run --network tooling_app_network -p 8085:8000 -it phptodo
 
 ![logo](https://raw.githubusercontent.com/hectorproko/MIGRATION-TO-THE-LOUD-WITH-CONTAINERIZATION---DOCKER-DOSECKER-COMPO/main/images/todocontainer.gif)  
 
-**Part of the output:**
+**Part of the output:**  
 Using [Laravel](https://laravel.com/) to server the php application   
 ``` bash
 Generating autoload files
@@ -345,6 +346,32 @@ Laravel development server started on http://0.0.0.0:8000/
 ![logo](https://raw.githubusercontent.com/hectorproko/MIGRATION-TO-THE-LOUD-WITH-CONTAINERIZATION---DOCKER-DOSECKER-COMPO/main/images/todopage.gif) 
 
 ### Part 2
+**Tasks**:
+1. Created an account in [Docker Hub](https://hub.docker.com/)  
+2. Created a new Docker Hub repository **project20**  
+3. Pushed the docker images from local machine to the repository  
+
+Image I want to push is `phptodo`  
+``` bash
+hector@hector-Laptop:~$ docker images | grep phptodo
+phptodo                              latest       d11eee293df9   20 hours ago    548MB
+hector@hector-Laptop:~$
+```
+Authenticate docker logging  
+``` bash
+docker login --username=hectorproko
+```
+Output:  
+``` bash
+Password:
+WARNING! Your password will be stored unencrypted in /home/hector/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+```
+
+
 ### Part 3
 
 
