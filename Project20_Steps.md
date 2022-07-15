@@ -407,6 +407,16 @@ Click **See all**
 
 
 ### Part 3
+**Tasks**:
+1. Write a `Jenkinsfile` that will simulate a Docker Build and a Docker Push to the registry  
+2. Connect your repo to Jenkins  
+3. Create a multi-branch pipeline  
+4. Simulate a CI pipeline from a feature and master branch using previously created `Jenkinsfile`  
+5. Ensure that the tagged images from your `Jenkinsfile` have a prefix that suggests which branch the image was pushed from. For example, `feature-0.0.1`.  
+6. Verify that the images pushed from the CI can be found at the registry.  
 
+Created a new branch `docker_job` in repo `php-todo` just to hold a [`Jenkinsfile`](https://github.com/hectorproko/php-todo/blob/docker_job/Jenkinsfile)
+
+https://github.com/hectorproko/php-todo/blob/docker_job/Jenkinsfile
 
 ## Practice Task №2 – Complete Continuous Integration With A Test Stage
