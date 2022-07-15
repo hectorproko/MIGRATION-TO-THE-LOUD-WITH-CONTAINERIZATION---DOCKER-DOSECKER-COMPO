@@ -314,9 +314,8 @@ Now I will build my `php-todo` app image using `docker build` in the root direct
 
 Double checking image was created  
 ``` bash
-hector@hector-Laptop:~/PRACTICE_TASK/phpHec/php-todo$ docker images | grep phptodo
+$ docker images | grep phptodo
 phptodo                              latest       d11eee293df9   27 minutes ago      548MB
-hector@hector-Laptop:~/PRACTICE_TASK/phpHec/php-todo$
 ```
 
 
