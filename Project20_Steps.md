@@ -357,12 +357,9 @@ hector@hector-Laptop:~$ docker images | grep phptodo
 phptodo                              latest       d11eee293df9   20 hours ago    548MB
 hector@hector-Laptop:~$
 ```
-Authenticate docker logging  
+Authenticate docker logging `docker login`  
 ``` bash
-docker login --username=hectorproko
-```
-Output:  
-``` bash
+$ docker login --username=hectorproko
 Password:
 WARNING! Your password will be stored unencrypted in /home/hector/.docker/config.json.
 Configure a credential helper to remove this warning. See
@@ -370,7 +367,14 @@ https://docs.docker.com/engine/reference/commandline/login/#credentials-store
 
 Login Succeeded
 ```
+I'll tag the **image** to specify the **user**, **repo** and **name** of image (at destination) using `docker tag` `image ID` `hectorproko/project20:phptodo`  
 
+``` bash
+hector@hector-Laptop:~$ docker tag d11eee293df9 hectorproko/project20:phptodo
+hector@hector-Laptop:~$ docker images | grep phptodo
+hectorproko/project20                phptodo      d11eee293df9   21 hours ago    548MB
+phptodo                              latest       d11eee293df9   21 hours ago    548MB
+```
 
 ### Part 3
 
