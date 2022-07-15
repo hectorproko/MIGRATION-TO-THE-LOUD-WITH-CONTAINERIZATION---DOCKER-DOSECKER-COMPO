@@ -300,14 +300,14 @@ The 3 files we need to focus on are:
 [Dockerfile](https://github.com/hectorproko/php-todo/blob/main/Dockerfile)  
 [start-apache.sh](https://github.com/hectorproko/php-todo/blob/main/start-apache.sh)  
 [.env](https://github.com/hectorproko/php-todo/blob/main/.env)  
-
-       This portion:  
-       ``` bash
-       DB_HOST=mysql-server
-       DB_DATABASE=hector
-       DB_USERNAME=hector
-       DB_PASSWORD=password
-       ```
+ 
+ ``` bash
+ #This portion
+DB_HOST=mysql-server
+DB_DATABASE=hector
+DB_USERNAME=hector
+DB_PASSWORD=password
+```
 
 
 ### Part 2
