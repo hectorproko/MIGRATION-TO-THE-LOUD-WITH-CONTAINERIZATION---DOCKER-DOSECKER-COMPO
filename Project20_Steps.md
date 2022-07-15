@@ -376,6 +376,30 @@ hectorproko/project20                phptodo      d11eee293df9   21 hours ago   
 phptodo                              latest       d11eee293df9   21 hours ago    548MB
 ```
 
+Now I push **image** `hectorproko/project20:phptodo` to repo **project20** (all specified in th e **tag**)  
+
+``` bash
+hector@hector-Laptop:~$ docker push hectorproko/project20:phptodo
+The push refers to repository [docker.io/hectorproko/project20]
+a4a30dbdf285: Pushed
+8bbf535c1f67: Pushed
+c36235383c8e: Pushed
+d10e1ab513aa: Mounted from library/php
+cf5a028805be: Mounted from library/php
+31ee2ad0069c: Mounted from library/php
+3a6511781124: Mounted from library/php
+dd5f6ab1e450: Mounted from library/php
+49269d9adf35: Mounted from library/php
+6fd16b261e9c: Mounted from library/php
+cefda33a1738: Mounted from library/php
+08249ce7456a: Mounted from library/php
+phptodo: digest: sha256:422f9c3adbe810f3ed0976a6a58a3f97e7815913da5f9639645aac198bc83ade size: 2834
+hector@hector-Laptop:~$
+```
+`phptodo: digest: sha256:422f9c3adbe810f3ed0976a6a58a3f97e7815913da5f9639645aac198bc83ade size: 2834`  
+
+
+
 ### Part 3
 
 
