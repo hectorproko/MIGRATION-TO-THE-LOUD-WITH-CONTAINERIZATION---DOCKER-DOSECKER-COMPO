@@ -302,21 +302,14 @@ The 3 files we need to focus on are:
 [.env](https://github.com/hectorproko/php-todo/blob/main/.env)  
  
  ``` bash
- #This portion
+ #This portion of .env
 DB_HOST=mysql-server
 DB_DATABASE=hector
 DB_USERNAME=hector
 DB_PASSWORD=password
 ```
-[random value]: variable value
+Now I will build my `php-todo` app image using `docker build` in the root directory of [TODO app Repo](https://github.com/hectorproko/php-todo) where the desire [Dockerfile](https://github.com/hectorproko/php-todo/blob/main/Dockerfile) file is located  
 
-```mermaid
-  graph TD;
-      [random value]-->B;
-      A-->C;
-      B-->D;
-      C-->D;
-```
 ### Part 2
 ### Part 3
 
