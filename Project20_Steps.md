@@ -313,13 +313,36 @@ Now I will build my `php-todo` app image using `docker build` in the root direct
 docker build -t phptodo . 
 ```
 
-Double checking image was created  
+Double checking **image** was created  
 ``` bash
 $ docker images | grep phptodo
 phptodo                              latest       d11eee293df9   27 minutes ago      548MB
 ```
 
+Using newly created **image** (phptodo) to start a **container**  
+``` bash
+docker run --network tooling_app_network -p 8085:8000 -it phptodo
+```
 
+![logo](https://raw.githubusercontent.com/hectorproko/MIGRATION-TO-THE-LOUD-WITH-CONTAINERIZATION---DOCKER-DOSECKER-COMPO/main/images/todocontainer.gif)  
+
+**Part of the output:**
+Using [Laravel](https://laravel.com/) to server the php application   
+``` bash
+Generating autoload files
+> php artisan clear-compiled
+> php artisan optimize
+Generating optimized class loader
+Nothing to migrate.
+Application key [lG6XbWSiRUu19AeD49zXUu1NZtdd7F7j] set successfully.
+Application cache cleared!
+Configuration cache cleared!
+Route cache cleared!
+Laravel development server started on http://0.0.0.0:8000/
+[Wed Jul  6 21:25:11 2022] PHP 7.4.30 Development Server (http://0.0.0.0:8000) started
+```
+
+![logo](https://raw.githubusercontent.com/hectorproko/MIGRATION-TO-THE-LOUD-WITH-CONTAINERIZATION---DOCKER-DOSECKER-COMPO/main/images/todopage.gif) 
 
 ### Part 2
 ### Part 3
