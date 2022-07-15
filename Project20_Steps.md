@@ -310,6 +310,17 @@ DB_PASSWORD=password
 ```
 Now I will build my `php-todo` app image using `docker build` in the root directory of [TODO app Repo](https://github.com/hectorproko/php-todo) where the desire [Dockerfile](https://github.com/hectorproko/php-todo/blob/main/Dockerfile) file is located  
 
+`docker build -t phptodo . `
+
+Double checking image was created  
+``` bash
+hector@hector-Laptop:~/PRACTICE_TASK/phpHec/php-todo$ docker images | grep phptodo
+phptodo                              latest       d11eee293df9   27 minutes ago      548MB
+hector@hector-Laptop:~/PRACTICE_TASK/phpHec/php-todo$
+```
+
+
+
 ### Part 2
 ### Part 3
 
