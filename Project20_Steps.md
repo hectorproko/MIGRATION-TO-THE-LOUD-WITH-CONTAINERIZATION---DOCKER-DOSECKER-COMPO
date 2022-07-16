@@ -459,9 +459,10 @@ Here I use **two** env **variables**, branch and build number to **tag** the **i
 
 Here I create the container using the same two **variables** to identify the **image** after stopping and removing previous container so there is no conflict  
 `stage('Start Container')`  
-`sh "docker stop php-todo && docker rm php-todo"`  
-`sh "docker run -d --name php-todo --network tooling_app_network -p 8085:8000 hectorproko/project20:php-todo-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"`  
-
+``` bash
+sh "docker stop php-todo && docker rm php-todo" 
+sh "docker run -d --name php-todo --network tooling_app_network -p 8085:8000 hectorproko/project20:php-todo-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"  
+```
 Puhing **image** to **DuckerHub** (Already shown above)      
 `stage('Push Image')`  
 
