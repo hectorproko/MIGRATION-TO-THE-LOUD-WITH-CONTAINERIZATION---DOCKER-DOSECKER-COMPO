@@ -125,7 +125,7 @@ mysql: [Warning] Using a password on the command line interface can be insecure.
 hector@hector-Laptop:~$
 ```
 
-Connecting to **mysql-server** using another container in interactive mode  
+Connecting to **mysql-server** using another **container** in interactive mode  
 ``` bash
 docker run --network tooling_app_network --name mysql-client -it --rm mysql mysql -h mysqlserverhost -u hector -p
 ```
