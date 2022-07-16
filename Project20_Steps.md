@@ -410,12 +410,12 @@ Click **See all**
 **Tasks**:
 1. Write a `Jenkinsfile` that will simulate a Docker Build and a Docker Push to the registry  
 2. Connect your repo to Jenkins  
-3. Create a multi-branch pipeline  
+3. Create a **multi-branch** pipeline  
 4. Simulate a CI pipeline from a feature and master branch using previously created `Jenkinsfile`  
 5. Ensure that the tagged images from your `Jenkinsfile` have a prefix that suggests which branch the image was pushed from. For example, `feature-0.0.1`.  
 6. Verify that the images pushed from the CI can be found at the registry.  
 
-Created a new branch `docker_job` in repo `php-todo` just to hold a [`Jenkinsfile`](https://github.com/hectorproko/php-todo/blob/docker_job/Jenkinsfile)
+Created a new **branch** `docker_job` in **repo** `php-todo` just to hold a [`Jenkinsfile`](https://github.com/hectorproko/php-todo/blob/docker_job/Jenkinsfile)
 
 To work and test on this file I'll start a **Jenkins** instance in my local machine (has Docker Engine) using `.war` file  
 
@@ -425,6 +425,30 @@ Download the `.war` and run `java -jar jenkins.war `
 The **Jenkins** job has to be **Multibranch Pipeline** or environment variable `BRANCH_NAME` will not work  
 ![logo](https://raw.githubusercontent.com/hectorproko/MIGRATION-TO-THE-LOUD-WITH-CONTAINERIZATION---DOCKER-DOSECKER-COMPO/main/images/multibranch.png)  
 
+Creating **DockerHub** credentials  
+
+In the **Snippet Generator** "Sample Step: withCredentials: Bind credentials to variables" I generate **username** and **password** 
+
+Now I can use the credentials to **login** and **push**  
+``` bash
+withCredentials([usernamePassword(credentialsId: 'DockerHubLogIn', passwordVariable: 'password', usernameVariable: 'username')]) {
+  sh "docker login -u ${username} -p ${password}"
+  sh "docker push hectorproko/project20:php-todo-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
+}
+```
+
+The credentials can now be found in **Manage Jenkins** > **Manage Credentials**  
+![logo](https://raw.githubusercontent.com/hectorproko/MIGRATION-TO-THE-LOUD-WITH-CONTAINERIZATION---DOCKER-DOSECKER-COMPO/main/images/credentials.png)  
+
+I do three sample **builds**  
+![logo](https://raw.githubusercontent.com/hectorproko/MIGRATION-TO-THE-LOUD-WITH-CONTAINERIZATION---DOCKER-DOSECKER-COMPO/main/images/buildhistory.png)  
+
+The three builds appear in **DockerHub**  
+![logo](https://raw.githubusercontent.com/hectorproko/MIGRATION-TO-THE-LOUD-WITH-CONTAINERIZATION---DOCKER-DOSECKER-COMPO/main/images/project20_2.png)  
 
 
-## Practice Task №2 – Complete Continuous Integration With A Test Stage
+
+
+
+
+<!-- Practice Task №2 – Complete Continuous Integration With A Test Stage -->
