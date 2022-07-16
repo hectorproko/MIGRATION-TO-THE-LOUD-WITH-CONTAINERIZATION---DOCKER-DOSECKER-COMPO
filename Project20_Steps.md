@@ -473,8 +473,15 @@ Using **variables** to identify the **image** to delete
 ``` bash
 sh "docker rmi -f hectorproko/project20:php-todo-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"`  
 ```
-### Using Docker-Compose to define and run out multi-container Docker application Tooling
+### Using Docker-Compose to define and run the multi-container Docker application Tooling
+I'll use a **YAML** file `tooling.yml` to configure the application’s services. Then, with a single command, it will create and start all the services from the configuration.
 
+First I want to convert the **container** `mysql-server` to an **image** to reuse since it already has the needed database after executing script `tooling_db_schema.sql`  
 
+This new **image** is **tagged** `mysql-server:tooling`  
+``` bash
+hector@hector-Laptop:~/tooling/html$ docker commit 598c041e96c5 mysql-server:tooling
+sha256:55c432b0319b60f0ac2f5ec14ece6c2095b15a0fdecfd9cf17c4687a7ee53be6
+```
 
 <!-- Practice Task №2 – Complete Continuous Integration With A Test Stage -->
