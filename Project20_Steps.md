@@ -484,4 +484,20 @@ hector@hector-Laptop:~/tooling/html$ docker commit 598c041e96c5 mysql-server:too
 sha256:55c432b0319b60f0ac2f5ec14ece6c2095b15a0fdecfd9cf17c4687a7ee53be6
 ```
 
+Need to update `tooling/html/.env` to a different **MySQL** server name `dockercompose_db_1` 
+``` bash
+hector@hector-Laptop:~$ bat tooling/html/.env
+───────┬─────────────────────────────────────────────────────────────────────────────────────────
+       │ File: tooling/html/.env
+───────┼─────────────────────────────────────────────────────────────────────────────────────────
+   1   │ # input your environment variables
+   2   │
+   3   │ MYSQL_IP=dockercompose_db_1
+   4   │ MYSQL_USER=hector
+   5   │ MYSQL_PASS=password
+   6   │ MYSQL_DBNAME=toolingdb
+───────┴─────────────────────────────────────────────────────────────────────────────────────────
+hector@hector-Laptop:~$
+```
+
 <!-- Practice Task №2 – Complete Continuous Integration With A Test Stage -->
