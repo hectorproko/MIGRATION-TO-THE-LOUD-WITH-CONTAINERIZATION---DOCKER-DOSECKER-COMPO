@@ -451,12 +451,14 @@ The rest of the [`Jenkinsfile`](https://github.com/hectorproko/php-todo/blob/doc
 
 Using an environment **variable** repo can get cloned with different branches  
 `stage('Checkout SCM')`  
-`git branch: "${env.BRANCH_NAME}", url: "https://github.com/hectorproko/php-todo.git"`  
-
+``` bash
+git branch: "${env.BRANCH_NAME}", url: "https://github.com/hectorproko/php-todo.git"`  
+```
 Here I use **two** env **variables**, branch and build number to **tag** the **image**  
 `stage('Docker Image Build')`  
-`sh "docker build -t hectorproko/project20:php-todo-${env.BRANCH_NAME}-${env.BUILD_NUMBER} ."`  
-
+``` bash
+sh "docker build -t hectorproko/project20:php-todo-${env.BRANCH_NAME}-${env.BUILD_NUMBER} ."`  
+```
 Here I create the container using the same two **variables** to identify the **image** after stopping and removing previous container so there is no conflict  
 `stage('Start Container')`  
 ``` bash
@@ -468,7 +470,9 @@ Puhing **image** to **DuckerHub** (Already shown above)
 
 Using **variables** to identify the **image** to delete  
 `stage('Delete Image')`  
-`sh "docker rmi -f hectorproko/project20:php-todo-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"`  
+``` bash
+sh "docker rmi -f hectorproko/project20:php-todo-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"`  
+```
 
 
 
