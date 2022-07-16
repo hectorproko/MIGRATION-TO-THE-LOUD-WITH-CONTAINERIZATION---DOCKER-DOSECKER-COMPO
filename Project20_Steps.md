@@ -449,11 +449,12 @@ The three builds appear in **DockerHub**
 
 The rest of the [`Jenkinsfile`](https://github.com/hectorproko/php-todo/blob/docker_job/Jenkinsfile)  
 
-Using an environment variable repo can get cloned with different branches  
+Using an environment **variable** repo can get cloned with different branches  
 `stage('Checkout SCM')`  
 `git branch: "${env.BRANCH_NAME}", url: "https://github.com/hectorproko/php-todo.git"`  
 
-
-
+Here I use **two** env **variables** branch and build number to **tag** the **image**  
+`stage('Docker Image Build')`  
+`sh "docker build -t hectorproko/project20:php-todo-${env.BRANCH_NAME}-${env.BUILD_NUMBER} ."`  
 
 <!-- Practice Task №2 – Complete Continuous Integration With A Test Stage -->
