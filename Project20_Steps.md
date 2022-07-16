@@ -465,7 +465,7 @@ Here I create the container using the same two **variables** to identify the **i
 Puhing **image** to **DuckerHub** (Already shown above)      
 `stage('Push Image')`  
 
-Using **variables** to identify the **image** to delete 
+Using **variables** to identify the **image** to delete  
 `stage('Delete Image')`  
 `sh "docker rmi -f hectorproko/project20:php-todo-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"`  
 
