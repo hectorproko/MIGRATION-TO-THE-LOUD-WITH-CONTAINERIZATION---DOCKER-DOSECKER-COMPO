@@ -417,6 +417,14 @@ Click **See all**
 
 Created a new branch `docker_job` in repo `php-todo` just to hold a [`Jenkinsfile`](https://github.com/hectorproko/php-todo/blob/docker_job/Jenkinsfile)
 
-https://github.com/hectorproko/php-todo/blob/docker_job/Jenkinsfile
+To work and test on this file I'll start a **Jenkins** instance in my local machine (has Docker Engine) using `.war` file  
+
+[Instructions](https://www.jenkins.io/doc/book/installing/war-file/)  
+Download the `.war` and run `java -jar jenkins.war `  
+
+The **Jenkins** job has to be **Multibranch Pipeline** or environment variable `BRANCH_NAME` will not work  
+![logo](https://raw.githubusercontent.com/hectorproko/MIGRATION-TO-THE-LOUD-WITH-CONTAINERIZATION---DOCKER-DOSECKER-COMPO/main/images/multibranch.png)  
+
+
 
 ## Practice Task №2 – Complete Continuous Integration With A Test Stage
