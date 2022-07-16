@@ -453,8 +453,23 @@ Using an environment **variable** repo can get cloned with different branches
 `stage('Checkout SCM')`  
 `git branch: "${env.BRANCH_NAME}", url: "https://github.com/hectorproko/php-todo.git"`  
 
-Here I use **two** env **variables** branch and build number to **tag** the **image**  
+Here I use **two** env **variables**, branch and build number to **tag** the **image**  
 `stage('Docker Image Build')`  
 `sh "docker build -t hectorproko/project20:php-todo-${env.BRANCH_NAME}-${env.BUILD_NUMBER} ."`  
+
+Here I create the container using the same two **variables** to identify the **image** after stopping and removing previous container so there is no conflict  
+`stage('Start Container')`  
+`sh "docker stop php-todo && docker rm php-todo"`  
+`sh "docker run -d --name php-todo --network tooling_app_network -p 8085:8000 hectorproko/project20:php-todo-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"`  
+
+Puhing **image** to **DuckerHub** (Already shown above)      
+`stage('Push Image')`  
+
+Using **variables** to identify the **image** to delete 
+`stage('Delete Image')`  
+`sh "docker rmi -f hectorproko/project20:php-todo-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"`  
+
+
+
 
 <!-- Practice Task №2 – Complete Continuous Integration With A Test Stage -->
