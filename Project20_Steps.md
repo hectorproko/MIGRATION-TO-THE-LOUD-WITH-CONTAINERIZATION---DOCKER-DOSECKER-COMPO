@@ -1,7 +1,10 @@
-# MIGRATION-TO-THE-CLOUD-WITH-CONTAINERIZATION--DOCKER-COMPOSE
-PROJECT 20  
+# MIGRATION TO THE СLOUD WITH CONTAINERIZATION - DOCKER & DOCKER COMPOSE
 
-Get docker engine in Ubuntu  
+PROJECT 20  
+In this project let us migrate the *Tooling Web Application* from a **VM-based** solution into a containerized one
+
+
+Get **Docker Engine** in Ubuntu  
 ``` bash
 hector@hector-Laptop:~$ docker --version
 Docker version 20.10.12, build 20.10.12-0ubuntu2~20.04.1
@@ -19,12 +22,12 @@ sudo chmod 666 /var/run/docker.sock #changing permissions
 sudo useradd -G docker $USER #add current user to group docker
 ```
 
-Currently I have no images
+Currently I have no **images**
 ``` bash
 hector@hector-Laptop:~$ docker images ls
 REPOSITORY   TAG       IMAGE ID   CREATED   SIZE
 ```
-Getting the image I need `mysql/mysql-server:latest`  
+Getting the **image** I need `mysql/mysql-server:latest`  
 ``` bash
 hector@hector-Laptop:~$ docker pull mysql/mysql-server:latest
 latest: Pulling from mysql/mysql-server
@@ -40,7 +43,7 @@ Status: Downloaded newer image for mysql/mysql-server:latest
 docker.io/mysql/mysql-server:latest
 ```
 
-Now I see the image I just downloaded  
+Now I see the **image** I just downloaded  
 ``` bash
 hector@hector-Laptop:~$ docker images
 REPOSITORY           TAG       IMAGE ID       CREATED        SIZE
@@ -48,13 +51,13 @@ mysql/mysql-server   latest    5a9594052aec   3 weeks ago    438MB
 ```
 
 
-deploying a new MySQL container  
+deploying a new MySQL **container**  
 `docker run --name <container_name> -e MYSQL_ROOT_PASSWORD=<my-secret-pw> -d <docker-image>`  
 
 `docker run --name MySQL -e MYSQL_ROOT_PASSWORD=Passw0rd! -d mysql/mysql-server:latest`  
 
 
- MySQL container is running:
+ MySQL **container** is running:
 
 ``` bash
 hector@hector-Laptop:~$ docker run --name MySQL -e MYSQL_ROOT_PASSWORD=Passw0rd! -d mysql/mysql-server:latest
@@ -72,7 +75,7 @@ Now I will do some cleaning to start fresh
 
 # CONNECTING TO THE MYSQL DOCKER CONTAINER
 
-First, create a network   
+First, create a **network**   
 `docker network create --subnet=10.0.0.0/24 tooling_app_network`
 
 I can double check with `docker network ls`  
@@ -86,7 +89,7 @@ NETWORK ID     NAME                  DRIVER    SCOPE
 hector@hector-Laptop:~$
 ```
 
-Creating a new container **mysql-server**  
+Creating a new **container** `mysql-server` 
 ``` bash
 export MYSQL_PW="Passw0rd!" #env variable to store root password
 docker run --network tooling_app_network -h mysqlserverhost --name=mysql-server -e MYSQL_ROOT_PASSWORD=$MYSQL_PW -d mysql/mysql-server:latest
@@ -97,7 +100,7 @@ Flags used:
 * **-h** specifies a hostname  
 * **-e**  to set  environment variable in the container  
 
-Double checking container creation `docker ps -a`  
+Double checking **container** creation `docker ps -a`  
 ``` bash
 hector@hector-Laptop:~$ docker ps -a
 CONTAINER ID   IMAGE                       COMMAND                  CREATED         STATUS                   PORTS                       NAMES
@@ -117,7 +120,7 @@ hector@hector-Laptop:~$ bat create_user.sql
 ───────┴─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
-Now I execute this script inside of the **mysql-server** container
+Now I execute this script inside of the `mysql-server` **container**
 
 ``` bash
 hector@hector-Laptop:~$ docker exec -i mysql-server mysql -uroot -p$MYSQL_PW < ./create_user.sql #make sure no space after -p
@@ -125,7 +128,7 @@ mysql: [Warning] Using a password on the command line interface can be insecure.
 hector@hector-Laptop:~$
 ```
 
-Connecting to **mysql-server** using another **container** in interactive mode  
+Connecting to `mysql-server` using another **container** in interactive mode  
 ``` bash
 docker run --network tooling_app_network --name mysql-client -it --rm mysql mysql -h mysqlserverhost -u hector -p
 ```
@@ -169,7 +172,7 @@ mysql> show databases;
 mysql>
 ```
 
-As long as we don't exit, the container will run  
+As long as we don't exit, the **container** will run  
 ``` bash
 
 hector@hector-Laptop:~$ docker ps -a
@@ -181,7 +184,7 @@ acbcd4888fe6   mysql/mysql-server:latest   "/entrypoint.sh mysq…"   3 hours ag
 ### Prepare database schema
 Cloned repo `git clone https://github.com/hectorproko/tooling` to path `/home/hector`  
 
-Creating an environmental variable for `tooling_db_schema.sql`'s path  
+Creating an **environmental variable** for `tooling_db_schema.sql`'s path  
 ``` bash
 hector@hector-Laptop:~/tooling/html$ export tooling_db_schema=/home/hector/tooling/html/tooling_db_schema.sql
 hector@hector-Laptop:~/tooling/html$ echo $tooling_db_schema
@@ -230,7 +233,7 @@ hector@hector-Laptop:~$
 
 ```
 ### Run the Tooling App  
-I will now containerize the application **tooling** by telling Docker how to pack the app into a container using a **Dockerfile**
+I will now containerize the application **tooling** by telling Docker how to pack the app into an **image** using a **Dockerfile**
 ``` bash
 hector@hector-Laptop:~/tooling$ bat Dockerfile
 ───────┬────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -286,8 +289,8 @@ If everything works, I can open the browser and type `http://localhost:8085`
 
 ### Part 1
 **Tasks**:  
-1. Write a Dockerfile for the TODO app [Repo Here](https://github.com/hectorproko/php-todo)
-2. Run both database and app on your laptop Docker Engine  
+1. Write a **Dockerfile** for the TODO app [Repo Here](https://github.com/hectorproko/php-todo)
+2. Run both **database** and **app** on your localmachine Docker Engine  
 3. Access the application from the browser  
 
 First I make sure I have my `mysql-server` **container** created/running with the `.sql` script executed
@@ -348,8 +351,8 @@ Laravel development server started on http://0.0.0.0:8000/
 ### Part 2
 **Tasks**:
 1. Created an account in [Docker Hub](https://hub.docker.com/)  
-2. Created a new Docker Hub repository **project20**  
-3. Pushed the docker images from local machine to the repository  
+2. Created a new **DockerHub** repository **project20**  
+3. Pushed the docker **images** from local machine to the repository  
 
 Image I want to push is `phptodo`  
 ``` bash
@@ -417,7 +420,7 @@ Click **See all**
 
 Created a new **branch** `docker_job` in **repo** `php-todo` just to hold a [`Jenkinsfile`](https://github.com/hectorproko/php-todo/blob/docker_job/Jenkinsfile)
 
-To work and test on this file I'll start a **Jenkins** instance in my local machine (has Docker Engine) using `.war` file  
+To work and test on this file I'll start a **Jenkins** instance in my local machine *(has Docker Engine)* using `.war` file  
 
 [Instructions](https://www.jenkins.io/doc/book/installing/war-file/)  
 Download the `.war` and run `java -jar jenkins.war `  
@@ -427,7 +430,7 @@ The **Jenkins** job has to be **Multibranch Pipeline** or environment variable `
 
 Creating **DockerHub** credentials  
 
-In the **Snippet Generator** "Sample Step: withCredentials: Bind credentials to variables" I generate **username** and **password** 
+In the **Snippet Generator** *"Sample Step: withCredentials: Bind credentials to variables"* I generate **username** and **password** 
 
 Now I can use the credentials to **login** and **push**  
 ``` bash
