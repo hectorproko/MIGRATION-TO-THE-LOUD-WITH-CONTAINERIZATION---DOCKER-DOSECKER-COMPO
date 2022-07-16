@@ -500,4 +500,21 @@ hector@hector-Laptop:~$ bat tooling/html/.env
 hector@hector-Laptop:~$
 ```
 
+Now we can execute the [`tooling.yml`](https://github.com/hectorproko/tooling/blob/master/tooling.yml) configuration with **Docker-Compose** to bring the tooling application up  
+`docker-compose -f tooling.yml up -d `  
+``` bash
+hector@hector-Laptop:~/tooling$ docker-compose -f tooling.yml up -d
+Creating dockercompose_db_1 ... done
+Creating dockercompose_tooling_frontend_1 ... done
+```
+We can see both containers running  
+``` bash
+hector@hector-Laptop:~/tooling$ docker container ls
+CONTAINER ID   IMAGE                            COMMAND                  CREATED         STATUS                   PORTS                                   NAMES
+b9d6940f7c30   dockercompose_tooling_frontend   "docker-php-entrypoi…"   2 minutes ago   Up 2 minutes             0.0.0.0:8085->80/tcp, :::8085->80/tcp   dockercompose_tooling_frontend_1
+1f9febd04ba1   mysql-server:tooling             "/entrypoint.sh mysq…"   2 minutes ago   Up 2 minutes (healthy)   3306/tcp, 33060-33061/tcp               dockercompose_db_1
+```
+This time I use a terminal browser **Lynx** to test page  
+![logo](https://raw.githubusercontent.com/hectorproko/MIGRATION-TO-THE-LOUD-WITH-CONTAINERIZATION---DOCKER-DOSECKER-COMPO/main/images/lynx.gif)  
+
 <!-- Practice Task №2 – Complete Continuous Integration With A Test Stage -->
